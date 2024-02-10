@@ -1,5 +1,6 @@
 import time
 import pyautogui
+from tqdm import tqdm
 from pynput import keyboard
 
 class AutoClicker:
@@ -16,10 +17,10 @@ class AutoClicker:
             return False
 
     def start_clicking(self):
-        for i in range(self.clicks):
+        for i in tqdm(range(self.clicks)):
             if not self.running:
                 break
-            print(f'{i} out of {self.clicks}')
+            #print(f'{i} out of {self.clicks}')
             pyautogui.click()
             time.sleep(self.interval)
 
@@ -30,5 +31,5 @@ time.sleep(1)
 print('1...')
 time.sleep(1)
 print('CLICK!')
-auto_clicker = AutoClicker(1000000, 0.0001)
+auto_clicker = AutoClicker(1000000, 0.00001)
 auto_clicker.start_clicking()
